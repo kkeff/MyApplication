@@ -14,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
     public final static String EXTRA_MESSAGE = "com.kaspergustavii.myapplication.MESSAGE";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//Bundle sparar information som sker i användarflöden mellan sidor osv.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -45,10 +45,12 @@ public class MainActivity extends ActionBarActivity {
     public void sendMessage (View view){
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
+        //Man skapar ett intent som är kopplat till DisplayMessageActivity - Nästa sida
         EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        //Man hittar edit message genom att leta igenom hela res? Det blir då viktigt med unika namn!
+        String message = editText.getText().toString();//Tar det inskrivna meddelandet från textfältet
+        intent.putExtra(EXTRA_MESSAGE, message);// Här lagras texten i Intentet
+        startActivity(intent);//startActivity måste vara en inbyggd metod som har parametern Intent
 
     }
 }
